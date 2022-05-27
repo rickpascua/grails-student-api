@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="angular-resource.min.js"></script>
+    <script src="apps.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-app="studentApp">
+    <div ng-controller="StudentController">
+      <form>
+        <label>Name</label>
+        <input type="text" name="name" ng-model="newStudent.name"/>
+        <br/><br/>
+        
+        <label>Email</label>
+        <input type="text" name="email" ng-model="newStudent.email"/>
+        <br/><br/>
+        
+        <label>Phone</label>
+        <input type="text" name="phone" ng-model="newStudent.phone"/>
+        <br/><br/>
+
+        <input type="hidden" ng-model="newStudent.id" />
+        <input type="button" value="Save" ng-click="saveStudent()" />
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="student in students">
+            <td>{{student.name}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.phone}}</td>
+            <td>
+              <a href="#" ng-click="edit(student.id)">Edit</a>
+              <a href="#" ng-click="delete(student.id)">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
